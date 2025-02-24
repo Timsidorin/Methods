@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 def f(x):
     return x**2 + math.sin(0.5 * x) - 1
 
-def chord_method(a, b, eps):
+def chord_method(a, b, eps = 0.001):
     if f(a) * f(b) >= 0:
         raise ValueError("На интервале нет корня")
     while abs(b-a) > eps:
@@ -16,19 +16,22 @@ def chord_method(a, b, eps):
     return b
 
 
+"""/////////////// Границы, найденные графически по графику/////////////////"""
 a = 0.5
 b = 1
-eps = 0.001
+""" ////////////////////////////////////////////////////////////"""
+
+
 
 # Для построения графика
 x = np.arange(-5, 5, 0.2)
 
-y1 = x**2  # 1 часть
-y2 =  1 - np.sin(0.5*x)   # 2 часть
+y1 = x**2  # 1-й график
+y2 =  1 - np.sin(0.5*x)   # 2-й график
 y3 = x**2 + np.sin(0.5 * x) - 1  # весь график
 
 # расчет методом хорд
-root = chord_method(a, b, eps)
+root = chord_method(a, b)
 
 # Создание фигуры с определенным размером
 fig, ax = plt.subplots(figsize=(10, 6))
@@ -43,7 +46,7 @@ plt.plot(root, 0, 'ro', markersize=10, label='Корень')
 
 plt.grid(True)
 plt.xlabel('Ось х')
-plt.axhline(y=0, color='black', linewidth=1.5)  # Способ 2
+plt.axhline(y=0, color='black', linewidth=1.5)
 plt.ylabel('Ось y')
 plt.title('1 задание')
 
@@ -55,6 +58,6 @@ fig.text(0.15, 0.02, f"Корень: {root:.3f}", fontsize=16)
 
 # Настройка отступов
 plt.tight_layout()
-plt.subplots_adjust(bottom=0.15)  # Оставляем место для текста внизу
+plt.subplots_adjust(bottom=0.15)
 
 plt.show()
