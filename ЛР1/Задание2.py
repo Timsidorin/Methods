@@ -18,10 +18,10 @@ def newton_method(x0, eps=0.001, max_iter=100) -> float:
         if abs(x_next - x_prev) < eps:
             return x_next
         x_prev = x_next
-    raise ValueError("Метод Ньютона не сошелся за указанное число итераций")
 
 
-root = newton_method(x0=3.0)
+
+root = newton_method(x0=3.5)
 
 print(f"Корень: {round(root, 3)}")
 print(f"Значение функции в корне: {f(root):.6f}")

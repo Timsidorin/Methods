@@ -6,13 +6,10 @@ def f(x):
     return x**2 + math.sin(0.5 * x) - 1
 
 def chord_method(a, b, eps = 0.001):
-    if f(a) * f(b) >= 0:
-        raise ValueError("На интервале нет корня")
     while abs(b-a) > eps:
         a = a - (b - a) * f(a) / (f(b) - f(a))
         b = b - (a - b) * f(b) / (f(a) - f(b))
         print(b)
-
     return b
 
 
