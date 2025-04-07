@@ -34,9 +34,9 @@ print("k\tx_k\t\tf(x_k)")
 for k in range(n1):
     print(f"{k}\t{x_nodes_n1[k]:.4f}\t{y_nodes_n1[k]:.4f}")
 
-print("\nИнтерполяционная таблица для n2 = 27 (первые 5 и последние 5 значений):")
+print("\nИнтерполяционная таблица для n2 = 27")
 print("k\tx_k\t\tf(x_k)")
-for k in list(range(5)) + list(range(n2-5, n2)):
+for k in range(n2):
     print(f"{k}\t{x_nodes_n2[k]:.4f}\t{y_nodes_n2[k]:.4f}")
 
 # 2. Построение интерполяционных полиномов g1(x) и g2(x)
