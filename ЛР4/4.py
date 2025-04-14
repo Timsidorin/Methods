@@ -5,13 +5,12 @@ def f(x):
     return 1 / (1 + K * x**2)
 
 def Интерполяция_Лагранджа(x, x_nodes, y_nodes):
-    n = len(x_nodes)
     result = 0.0
-    for k in range(n):
-        term = y_nodes[k]
-        for i in range(n):
-            if i != k:
-                term *= (x - x_nodes[i]) / (x_nodes[k] - x_nodes[i])
+    for i in range(len(x_nodes)):
+        term = y_nodes[i]
+        for j in range(len(x_nodes)):
+            if j != i:
+                term *= (x - x_nodes[j]) / (x_nodes[i] - x_nodes[j])
         result += term
     return result
 
