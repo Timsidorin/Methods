@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def f(x):
-    return 1 / (1 + 24 * x**2)
+    return 1 / (1 + K * x**2)
 
 def Интерполяция_Лагранджа(x, x_nodes, y_nodes):
     n = len(x_nodes)
@@ -18,7 +18,7 @@ def Интерполяция_Лагранджа(x, x_nodes, y_nodes):
 # Параметры
 n1 = 12
 n2 = 27
-K = 100
+K = 24
 a, b = -1, 1
 
 # 1. Построение интерполяционных таблиц
@@ -48,7 +48,7 @@ g2_values = np.array([Интерполяция_Лагранджа(x, x_nodes_n2,
 # 3. Погрешности p1 и p2
 f_values = f(x_test)
 p1 = np.max(np.abs(f_values - g1_values))
-p2 = np.max(np.abs(f_values - g2_values))
+p2 = np.sqrt(np.sum((f_values - g2_values)**2) / (K + 1))
 
 print(f"\nПогрешность p1 (n1=12): {p1:.6f}")
 print(f"Погрешность p2 (n2=27): {p2:.6f}")
@@ -62,7 +62,7 @@ plt.scatter(x_nodes_n1, y_nodes_n1, color='red', label='Узлы n1')
 plt.scatter(x_nodes_n2, y_nodes_n2, color='green', label='Узлы n2')
 plt.xlabel('x')
 plt.ylabel('y')
-plt.title('Интерполяция Лагранжа для f(x) = 1/(1 + 24x²)')
+plt.title(f'Интерполяция Лагранжа для f(x) = 1/(1 + {K}x²)')
 plt.legend()
 plt.grid()
 plt.show()
